@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+
+{% if to_pass %}
+
+<h1 align="center">Search results for '{{ page_title }}'</h1>
+<hr>
+
+<div class="container-fluid">
+  <div class="row">
+  
+  {% for post, image in to_pass.items %}
+        <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+          <div class="bg-white rounded shadow-sm"><img src="{{MEDIA_URL}}/images/{{ image.image_name }}.png" alt="" class="img-fluid card-img-top">
+            <div class="p-4">
+              <h5> <a href="{{post.post_url}}" class="text-dark">{{ post.mp.name }}</a></h5>
+              <h6>{{post.mp.party}}</h6>
+              <p class="small text-muted mb-0">{{ post.post_text|truncatechars:30 }}</p>
+              <p>likes: {{post.post_likes}} <br> {{post.post_time}}</p>
+              <div class="d-flex align-items-center justify-content-between">
+  
+                <!-- <div class="badge badge-success px-3 rounded-pill font-weight-normal">Hot</div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+  
+  {% endfor %}
+  
+  </div>
+
+{% else %}
+<h1 align="center">{{ page_title }}</h1>
+{% endif %}
+
+{% endblock %}

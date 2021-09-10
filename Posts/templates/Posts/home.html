@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="page-header">
+	<style>
+
+	 
+		.center {
+			margin: auto;
+			width: 100%;
+			/*border: 1px solid black;*/
+			padding: 10px;
+			}
+
+                #parent {
+                        display: table;
+                        width: 100%;
+                        height: 100px;
+                        text-align: center;
+                        padding: 50px;
+                }
+                #child {
+                    display: table-cell;
+                    vertical-align: middle;
+                }
+		main {
+		    font: 1rem 'Fira Sans', sans-serif;
+		}
+
+	</style>
+
+</header>
+
+<br>
+</body>
+
+
+<hr>
+
+
+<div id="parent">
+	<div id="child">
+	<h7> Take a look around and see what objects and elements Hungarian members of parliament include in their photographs posted to Facebook.
+	Below are some of the animals present on these images of parliamentarians.</h7>
+</div>
+</div>
+<hr>
+
+<div class="container-fluid">
+  <div class="px-lg-5">
+
+<!-- test -->
+<div class="row">
+{% for post, image in post_dict.items %}
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="bg-white rounded shadow-sm"><img src="media/images/{{ image.image_name }}.png" alt="" class="img-fluid card-img-top">
+          <div class="p-4">
+            <h5> <a href="{{post.post_url}}" class="text-dark">{{ post.mp.name }}</a></h5>
+	    <h6> {{ post.mp.party }} - {{ post.mp.constituency }} </h6>
+            <p class="small text-muted mb-0">{{ post.post_text|truncatechars:30 }}</p>
+            <div class="d-flex align-items-center justify-content-between">
+
+              <!-- <div class="badge badge-success px-3 rounded-pill font-weight-normal">Hot</div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+{% endfor %}
+<!-- end test -->
+
+ 		</div>
+ </div>
+</div>
+</body>
+
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="page-header">
+	<style>
+
+
+
+		header.page-header > h1 {
+		    font-family: Arial, Helvetica, sans-serif;
+		    font-size: 40px;
+		    margin: 2%;
+		    align-items: center;
+		    text-align: center;
+		}
+
+		main {
+		    font: 1rem 'Fira Sans', sans-serif;
+		    align-items: center;
+		}
+
+	</style>
+	<h1>Top Words by MP</h1>
+</header>
+
+<body>
+	<style>
+		table, th, td {
+		  border: 1px solid black;
+		  padding: 15px;
+		}
+	</style>
+	<br>
+{% for key, values in topWords.items %}
+
+	<div class='container-fluid'>
+		<p style='font-style: italic'>{{ key.name }}</p>
+		<table>
+			<tr>
+			{% for word in values %}
+			<td> {{ word }} </td>
+			{% endfor %}
+			</tr>
+		</table>
+
+	</div>
+	<br>
+
+{% endfor %}
+
+</body>
+{% endblock %}
